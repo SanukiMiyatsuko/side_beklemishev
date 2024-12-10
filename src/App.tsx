@@ -4,7 +4,7 @@ import { expand } from './code';
 
 function App() {
   const [inputA, setInputA] = useState("");
-  const [inputB, setInputB] = useState("");
+  const [inputB, setInputB] = useState("0");
   const [input, setInput] = useState("入力：");
   const [output, setOutput] = useState("出力：");
   const [outputError, setOutputError] = useState("");
@@ -15,9 +15,7 @@ function App() {
     setOutputError("");
     try {
       if (inputA === "") throw Error("Aの入力が必要です");
-      if (inputB === "") throw Error("Bの入力が必要です");
       if (!/^\d+(,\d+)*$/.test(inputA)) throw Error("Aには数列を入力してください");
-      if (!/^\d+$/.test(inputB)) throw Error("Bには数を入力してください");
       const seq = inputA.split(",").map(x => parseInt(x)).filter(x => !isNaN(x));
       const n = parseInt(inputB);
       const inputString = `expand((${inputA}),${inputB})`
@@ -46,13 +44,13 @@ function App() {
           type="text"
           placeholder="入力A"
         />
-        B:
+        <div>B:</div>
         <input
-          className="input is-primary"
+          className="inputB"
           value={inputB}
           onChange={(e) => setInputB(e.target.value)}
-          type="text"
-          placeholder="入力B"
+          type="number"
+          min="0"
         />
         <div className="block">
           <button className="button is-primary" onClick={() => compute()}>

@@ -22,6 +22,18 @@ main {
   font-size: x-large;
 }
 
+.inputB {
+  font-size: large;
+  height: 35px;
+  border-radius: 3px;
+  border-style: none;
+  outline: 1px double rgb(75, 214, 168);
+}
+.inputB:focus{
+  border-style: none;
+  outline: 2px double rgb(84, 238, 187);
+}
+
 .block {
   display: flex;
   padding-top: 1%;
